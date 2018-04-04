@@ -1,0 +1,6 @@
+                  Episodic Total Reward
+strategy                               
+Actor-Critic                  80.442463
+all_spsa                      87.138153
+alternating_spsa              82.766411
+output_spsa                   80.371830
