@@ -1,0 +1,53 @@
+# Environment Parameters
+environment:
+  name: Acrobot-v1
+  max_episode_steps: 2000
+  action_space: 3
+
+# State Configuration for Acrobot (Partial or Full)
+states:
+  partial: 0,1,2,3
+  full: 0,1,2,3,4,5
+
+# SPSA Parameters
+SPSA:
+  a_output: 5e-5
+  a_alter: 2e-5
+  a_all: 1e-5
+  c: 1e-1
+  A: 10
+  alpha: 0.102
+  gamma: 0.101
+  noise: 0
+  decay: 0
+
+# MDP Parameters
+MDP:
+  discount_factor: 0.99
+
+# Logging/Plotting
+log:
+  average_every: 200
+  interval: 500
+  runs: 10
+  iterations: 1000
+  final_average_per_strategy: 100
+
+# ESN Parameters
+ESN:
+  res_size: 40
+  input_conn: 0.3
+  res_conn: 0.7
+  input_scaling: 0.5
+  res_scaling: 0.5
+  out_scaling: 1e-5
+  spectral_radius: 1.0
+  leaking_rate: 0.3
+  initial_transient: 5
+
+# Estimators
+PolicyEstimator:
+  lr: 1e-3
+
+ValueEstimator:
+  lr: 1e-3

@@ -1,0 +1,63 @@
+# Environment Parameters
+environment:
+  name: MountainCarContinuous-v0
+  max_episode_steps: none
+  action_space: 1
+
+# State Configuration for Mountain Car (Partial or Full)
+states:
+  partial: 0
+  full: 0,1
+
+# MDP Parameters
+MDP:
+  discount_factor: 0.99
+
+# SPSA Parameters
+SPSA:
+  a_output: 5e-3
+  a_alter: 5e-4
+  a_all: 5e-4
+  c: 1e-1
+  A: 10
+  alpha: 0.602
+  gamma: 0.101
+  noise: 0
+  decay: 0
+
+
+# Logging/Plotting
+log:
+  average_every: 50
+  interval: 50
+  runs: 10
+  iterations: 200
+  final_average_per_strategy: 100
+
+# ESN Parameters
+ESN:
+  res_size: 40
+  input_conn: 0.7
+  res_conn: 0.7
+  input_scaling: 5e-1
+  res_scaling: 5e-1
+  out_scaling: 1e-2
+  spectral_radius: 1.0
+  leaking_rate: 0.3
+  initial_transient: 5
+
+# Estimators
+PolicyEstimator:
+  lr: 1e-3
+
+ValueEstimator:
+  lr: 1e-3
+
+# Policy visualization for SPSA
+PolicyVis:
+  episodes: 100
+  selected_state_start: -1.0, -1.0
+  selected_state_end: -0.5, 1.0
+
+
+

@@ -7,6 +7,7 @@ from components.optimizers import SPSA
 import matplotlib.pyplot as plt
 import seaborn as sns
 import tensorflow as tf
+import matplotlib
 
 
 def run_esn_policy_optimization_spsa(config, state_dim, weight_selection, loss_function, save_loc=None, log_policy=False, return_rad=False):
@@ -124,6 +125,9 @@ def rolling_mean(X, window_size, pad=None):
 def plot_learning_curve(file, title, series, value="Episodic Total Reward"):
     sns.set(style="darkgrid")
     sns.set_context("paper")
-    plt.title(title)
+    plt.title(title, fontsize=12)
     sns.tsplot(data=series, time="Iteration", unit="run", condition="strategy", value=value)
+    plt.legend(loc="lower right", fontsize=12)
+    plt.ylabel(value, fontsize=12)
+    plt.xlabel("Iteration", fontsize=12)
     plt.savefig(file)
