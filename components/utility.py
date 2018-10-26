@@ -6,11 +6,10 @@ from components.loss import EpisodicReturnSoftmaxPolicy, EpisodicReturnGaussianP
 from components.optimizers import SPSA
 import matplotlib.pyplot as plt
 import seaborn as sns
-import tensorflow as tf
 import matplotlib
 
 
-def run_esn_policy_optimization_spsa(config, state_dim, weight_selection, loss_function, save_loc=None, log_policy=False, return_rad=False):
+def run_esn_policy_optimization_spsa(config, state_dim, weight_selection, exploit_p, loss_function, save_loc=None, log_policy=False, return_rad=False):
     """
     
     :param config: configuration parameters
@@ -72,6 +71,7 @@ def run_esn_policy_optimization_spsa(config, state_dim, weight_selection, loss_f
                      alpha=float(config["SPSA"]["alpha"]),
                      gamma=float(config["SPSA"]["gamma"]),
                      param_decay=float(config["SPSA"]["decay"]),
+                     exploit_p=exploit_p,
                      loss_function=objective)
 
     # the main loop
@@ -86,7 +86,8 @@ def run_esn_policy_optimization_spsa(config, state_dim, weight_selection, loss_f
         total_reward, _ = objective(model.get_parameter(), False)
 
         # get the spectral radius
-        rad = model.get_spectral_radius()
+        #rad = model.get_spectral_radius()
+        rad = 0.0
 
         print("Evaluating at iteration:"+str(i)+", episodic return:"+str(total_reward) + ", spectral radius:"+str(rad))
 
